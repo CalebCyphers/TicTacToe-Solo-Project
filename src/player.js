@@ -7,4 +7,7 @@ class Player {
   saveWinToStorage() {
     this.wins++
   }
+  retrieveWinFromStorage() {
+    JSON
+  }
 }
