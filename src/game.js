@@ -2,9 +2,10 @@ class Game {
   constructor(player1, player2) {
     this.player1 = player1;
     this.player2 = player2;
-    this.board = [0,0,0,0,0,0,0,0,0];
+    this.board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     this.player1turn = true;
   }
+
   updateBoard(sector) {
     if (this.player1turn) {
       this.player1.moves.push(sector)
@@ -14,9 +15,11 @@ class Game {
     this.checkForWin()
     this.passTurn()
   }
+
   resetBoard() {
 
   }
+
   passTurn() {
     if (this.player1turn) {
       this.player1turn = false
@@ -24,7 +27,41 @@ class Game {
       this.player1turn = true
     }
   }
-  checkForWin() {
 
+  currentPlayer() {
+    if (this.player1turn) {
+      return this.player1
+    } else {
+      return this.player2
+    }
+  }
+
+  includesWin(winState, moves) {
+    for (var i = 0; i < winState.length; i++) {
+      if (moves.indexOf(winState[i]) === -1) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  checkForWin(player) {
+    var winStates = [
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+      [1, 4, 7],
+      [2, 5, 8],
+      [3, 6, 9],
+      [1, 5, 9],
+      [3, 5, 7]
+    ]
+    var player = this.currentPlayer()
+    for (var i = 0; i < winStates.length; i++) {
+      if (this.includesWin(winStates[i], player.moves)) {
+        return `${player.name} got a win!`
+      }
+    }
+    return "No wins yet. Keep playing!"
   }
 }
