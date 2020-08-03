@@ -4,6 +4,7 @@ class Game {
     this.player2 = player2;
     this.board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     this.player1turn = true;
+    this.turnsTaken = 0
   }
 
   updateBoard(sector) {
@@ -13,11 +14,14 @@ class Game {
       this.player2.moves.push(sector)
     }
     this.checkForWin()
-    this.passTurn()
+    this.checkForDraw()
   }
 
   resetBoard() {
-
+    this.player1.moves = []
+    this.player2.moves = []
+    this.player1turn = true
+    this.turnsTaken = 0
   }
 
   passTurn() {
@@ -30,7 +34,7 @@ class Game {
 
   includesWin(winState, moves) {
     for (var i = 0; i < winState.length; i++) {
-      if (moves.indexOf(winState[i]) === -1) {
+      if (!moves.includes(winState[i])) {
         return false;
       }
     }
@@ -54,11 +58,19 @@ class Game {
     for (var i = 0; i < winStates.length; i++) {
       if (this.includesWin(winStates[i], player.moves)) {
         console.log(`${player.name} got a win!`)
-        return `${player.name} got a win!`
+        this.resetBoard()
+        return
       }
     }
     console.log("No wins yet. Keep playing!")
-    return "No wins yet. Keep playing!"
+    this.passTurn()
+  }
+  checkForDraw() {
+    this.turnsTaken ++
+    if (this.turnsTaken === 9){
+      console.log(`It's a draw! Try again, nerds!`)
+      this.resetBoard()
+    }
   }
   currentPlayer() {
     if (this.player1turn) {
