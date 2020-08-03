@@ -28,14 +28,6 @@ class Game {
     }
   }
 
-  currentPlayer() {
-    if (this.player1turn) {
-      return this.player1
-    } else {
-      return this.player2
-    }
-  }
-
   includesWin(winState, moves) {
     for (var i = 0; i < winState.length; i++) {
       if (moves.indexOf(winState[i]) === -1) {
@@ -57,11 +49,22 @@ class Game {
       [3, 5, 7]
     ]
     var player = this.currentPlayer()
+    var testresponse = `the current player is ${player.name} and they have taken these spaces: ${player.moves}`
+    console.log(testresponse)
     for (var i = 0; i < winStates.length; i++) {
       if (this.includesWin(winStates[i], player.moves)) {
+        console.log(`${player.name} got a win!`)
         return `${player.name} got a win!`
       }
     }
+    console.log("No wins yet. Keep playing!")
     return "No wins yet. Keep playing!"
+  }
+  currentPlayer() {
+    if (this.player1turn) {
+      return this.player1
+    } else {
+      return this.player2
+    }
   }
 }
