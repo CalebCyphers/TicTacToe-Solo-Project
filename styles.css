@@ -3,9 +3,53 @@ html {
   background-size: 100% 100%;
 }
 
+body {
+  width: 100%;
+  height: 100%;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content:;
+}
+
 h1 {
   color: white;
+  text-align: center;
 }
 h2 {
   color: white;
+  text-align: center;
+}
+
+.player1-info {
+  display: flex;
+  flex-direction: column;
+  width: 34rem;
+}
+
+.player2-info {
+  display: flex;
+  flex-direction: column;
+  width: 34rem;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+}
+
+.game-sector {
+  height: 10rem;
+  width: 10rem;
+}
+
+.sector-img {
+  height: 100%;
+  width: auto;
 }
