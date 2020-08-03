@@ -17,19 +17,35 @@ var game = new Game(firstPlayer, secondPlayer)
 
 // Functions
 function loadHandler() {
-
+  domUpdate()
 }
 
 function clickHandler() {
-  if (event.target.className === "sector-img") takeSpace(event);
+  if (event.target.className === "sector-img" && event.target.attributes.src.nodeValue === "./img/box-ink.png") {
+  takeSpace(event);
+  game.updateBoard(parseInt(event.target.dataset.sector))
+  resolver()
+  domUpdate()
+  }
+}
+
+function resolver() {
+  if (game.checkForWin()) {
+    console.log(`${game.currentPlayer().name} got a win!`)
+    game.resetMoves()
+  } else if (game.checkForDraw()) {
+    console.log(`It's a draw! Try again, nerds!`)
+    game.resetBoard()
+  } else {
+    console.log("No wins yet. Keep playing!")
+    game.passTurn()
+  }
 }
 
 function takeSpace(event) {
-  if (event.target.attributes.src.nodeValue === "./img/box-ink.png" && game.player1turn) {
+  if (game.player1turn) {
   event.target.attributes.src.nodeValue = "./img/x-ink.png";
-  game.updateBoard(parseInt(event.target.dataset.sector))
-} else if (event.target.attributes.src.nodeValue === "./img/box-ink.png" && !game.player1turn) {
+} else if (!game.player1turn) {
   event.target.attributes.src.nodeValue = "./img/o-ink.png";
-  game.updateBoard(parseInt(event.target.dataset.sector))
 };
 }
