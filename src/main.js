@@ -25,9 +25,11 @@ function clickHandler() {
 }
 
 function takeSpace(event) {
-  if (event.target.attributes.src.nodeValue === "./img/box-ink.png" && ) {
-  event.target.attributes.src.nodeValue = "./img/o-ink.png";
-} else {
+  if (event.target.attributes.src.nodeValue === "./img/box-ink.png" && game.player1turn) {
   event.target.attributes.src.nodeValue = "./img/x-ink.png";
+  game.updateBoard(parseInt(event.target.dataset.sector))
+} else if (event.target.attributes.src.nodeValue === "./img/box-ink.png" && !game.player1turn) {
+  event.target.attributes.src.nodeValue = "./img/o-ink.png";
+  game.updateBoard(parseInt(event.target.dataset.sector))
 };
 }
