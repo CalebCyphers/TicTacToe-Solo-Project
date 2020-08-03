@@ -11,17 +11,23 @@ window.addEventListener('load', loadHandler);
 
 // Global variables
 
+var firstPlayer = new Player("Ryan")
+var secondPlayer = new Player("Kaia")
+var game = new Game(firstPlayer, secondPlayer)
+
 // Functions
 function loadHandler() {
 
 }
 
 function clickHandler() {
-  if (event.target.className === "sector-img") takeSpace();
+  if (event.target.className === "sector-img") takeSpace(event);
 }
 
-function takeSpace() {
-  if (11 === 11) {
-    console.log('Yay, bitch')
-  }
+function takeSpace(event) {
+  if (event.target.attributes.src.nodeValue === "./img/box-ink.png" && ) {
+  event.target.attributes.src.nodeValue = "./img/o-ink.png";
+} else {
+  event.target.attributes.src.nodeValue = "./img/x-ink.png";
+};
 }
