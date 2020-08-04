@@ -19,6 +19,8 @@ var game = new Game(firstPlayer, secondPlayer)
 
 // Functions
 function loadHandler() {
+  game.player1.retrieveWinFromStorage()
+  game.player2.retrieveWinFromStorage()
   domUpdate()
 }
 
@@ -27,6 +29,8 @@ function clickHandler() {
     takeSpace(event);
     game.updateBoard(parseInt(event.target.dataset.sector));
     resolver();
+    game.player1.saveWinToStorage()
+    game.player2.saveWinToStorage()
   }
 }
 

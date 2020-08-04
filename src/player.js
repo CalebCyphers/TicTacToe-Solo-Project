@@ -9,6 +9,11 @@ class Player {
     localStorage.setItem(`${this.name}`, wins);
   }
   retrieveWinFromStorage() {
+    var stuffInStorage = JSON.parse(localStorage.getItem(`${this.name}`))
+    if (stuffInStorage === null) {
+      this.saveWinToStorage()
+    } else {
     this.wins = JSON.parse(localStorage.getItem(`${this.name}`))
+    }
   }
 }
