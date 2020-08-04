@@ -1,6 +1,10 @@
 html {
-  background-image: url("./img/test-bg.jpg");
-  background-size: 100% 100%;
+  background-image: url("./img/background.jpeg");
+  background-size: 210% auto;
+  background-position: top;
+  background-repeat: no-repeat;
+  height: 120%;
+  background-color: black;
 }
 
 body {
@@ -19,7 +23,7 @@ main {
 h1 {
   color: white;
   text-align: center;
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 h2 {
@@ -38,6 +42,7 @@ h2 {
   flex-direction: column;
   width: 34rem;
 }
+
 
 .win-text-wrapper {
   display: flex;
@@ -74,7 +79,7 @@ h2 {
 
 .overlay {
   position: absolute;
-  background-color: red;
+  background-color: black;
   opacity: 0;
   height: 100%;
   width: 100%;
@@ -98,6 +103,6 @@ h2 {
 }
 
 .sector-img {
-  height: 90%;
+  height: 100%;
   width: auto;
 }

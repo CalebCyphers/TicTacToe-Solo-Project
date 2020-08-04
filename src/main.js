@@ -25,7 +25,7 @@ function loadHandler() {
 }
 
 function clickHandler() {
-  if (event.target.className === "sector-img" && event.target.attributes.src.nodeValue === "./img/box-ink.png") {
+  if (event.target.className === "sector-img" && event.target.attributes.src.nodeValue === "./img/Skull.png") {
     takeSpace(event);
     game.updateBoard(parseInt(event.target.dataset.sector));
     resolver();
@@ -61,7 +61,7 @@ function domUpdate() {
   p2WinText.innerText = `O wins: ${game.player2.wins}`;
   if (game.player1.moves.length === 0 && game.player2.moves.length === 0) {
     for (var i = 0; i < sectors.length; i++) {
-      sectors[i].src = "./img/box-ink.png";
+      sectors[i].src = "./img/Skull.png";
     }
   }
 }
@@ -76,8 +76,8 @@ function allowClick() {
 
 function takeSpace(event) {
   if (game.player1turn) {
-    event.target.attributes.src.nodeValue = "./img/x-ink.png";
+    event.target.attributes.src.nodeValue = "./img/Broken_Skull.png";
   } else if (!game.player1turn) {
-    event.target.attributes.src.nodeValue = "./img/o-ink.png";
+    event.target.attributes.src.nodeValue = "./img/Flaming_Skull.gif";
   };
 }
