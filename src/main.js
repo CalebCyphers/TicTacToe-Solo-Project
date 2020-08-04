@@ -39,6 +39,8 @@ function resolver() {
     turnTrackerText.innerText = game.player1turn ? `X got a win!` : `O got a win!`;
     game.resetMoves();
     stopClick();
+    p1WinText.innerText = `X wins: ${game.player1.wins}`;
+    p2WinText.innerText = `O wins: ${game.player2.wins}`;
     window.setTimeout(domUpdate, 3000);
   } else if (game.checkForDraw()) {
     game.resetMoves();
