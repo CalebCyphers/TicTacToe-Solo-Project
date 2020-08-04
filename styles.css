@@ -72,6 +72,19 @@ h2 {
   margin-top: 4rem;
 }
 
+.overlay {
+  position: absolute;
+  background-color: red;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.hidden {
+  display: none !important;
+}
+
 .game-bottom {
   height: 34rem;
 }
