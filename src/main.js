@@ -31,8 +31,8 @@ function clickHandler() {
 
 function resolver() {
   if (game.checkForWin()) {
-    game.resetMoves();
     turnTrackerText.innerText = game.player1turn ? `X got a win!` : `O got a win!`;
+    game.resetMoves();
     window.setTimeout(domUpdate, 3000);
   } else if (game.checkForDraw()) {
     game.resetMoves();
