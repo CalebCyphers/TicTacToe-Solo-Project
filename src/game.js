@@ -50,11 +50,10 @@ class Game {
       [1, 5, 9],
       [3, 5, 7]
     ]
-    var player = this.currentPlayer()
-    var testresponse = `the current player is ${player.name} and they have taken these spaces: ${player.moves}`
-    console.log(testresponse)
+    console.log(`the current player is ${this.currentPlayer().name} and they have taken these spaces: ${this.currentPlayer().moves}`)
     for (var i = 0; i < winStates.length; i++) {
-      if (this.includesWin(winStates[i], player.moves)) {
+      if (this.includesWin(winStates[i], this.currentPlayer().moves)) {
+        this.currentPlayer().wins ++
         return true
       }
     }
