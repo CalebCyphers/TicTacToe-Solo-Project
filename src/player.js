@@ -5,9 +5,15 @@ class Player {
     this.moves = [];
   }
   saveWinToStorage() {
-    this.wins++
+    var wins = JSON.stringify(this.wins);
+    localStorage.setItem(`${this.name}`, wins);
   }
   retrieveWinFromStorage() {
-    JSON
+    var stuffInStorage = JSON.parse(localStorage.getItem(`${this.name}`))
+    if (stuffInStorage === null) {
+      this.saveWinToStorage()
+    } else {
+    this.wins = JSON.parse(localStorage.getItem(`${this.name}`))
+    }
   }
 }
