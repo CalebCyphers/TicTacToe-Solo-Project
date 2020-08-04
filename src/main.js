@@ -4,6 +4,7 @@ var turnTrackerText = document.querySelector('.turn-tracker-text');
 var p1WinText = document.querySelector('.p1-win-text');
 var p2WinText = document.querySelector('.p2-win-text');
 var sectors = document.querySelectorAll('.sector-img');
+var overlay = document.querySelector('.overlay');
 
 // Event listeners
 
@@ -33,10 +34,12 @@ function resolver() {
   if (game.checkForWin()) {
     turnTrackerText.innerText = game.player1turn ? `X got a win!` : `O got a win!`;
     game.resetMoves();
+    stopClick();
     window.setTimeout(domUpdate, 3000);
   } else if (game.checkForDraw()) {
     game.resetMoves();
     turnTrackerText.innerText = `Draw`;
+    stopClick()
     window.setTimeout(domUpdate, 3000);
   } else {
     game.passTurn();
@@ -44,7 +47,9 @@ function resolver() {
   }
 }
 
+
 function domUpdate() {
+  allowClick()
   turnTrackerText.innerText = game.player1turn ? `X's turn` : `O's turn`;
   p1WinText.innerText = `X wins: ${game.player1.wins}`;
   p2WinText.innerText = `O wins: ${game.player2.wins}`;
@@ -53,6 +58,14 @@ function domUpdate() {
       sectors[i].src = "./img/box-ink.png";
     }
   }
+}
+
+function stopClick() {
+  overlay.classList.remove("hidden")
+}
+
+function allowClick() {
+  overlay.classList.add("hidden")
 }
 
 function takeSpace(event) {
