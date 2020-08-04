@@ -23,24 +23,24 @@ function loadHandler() {
 
 function clickHandler() {
   if (event.target.className === "sector-img" && event.target.attributes.src.nodeValue === "./img/box-ink.png") {
-  takeSpace(event);
-  game.updateBoard(parseInt(event.target.dataset.sector))
-  resolver()
-  domUpdate()
+    takeSpace(event);
+    game.updateBoard(parseInt(event.target.dataset.sector));
+    resolver();
   }
 }
 
 function resolver() {
   if (game.checkForWin()) {
-    console.log(`${game.currentPlayer().name} got a win!`)
-    game.resetMoves()
-    turnTrackerText.innerText = game.player1turn ? `X got a win!` : `O got a win!`
+    game.resetMoves();
+    turnTrackerText.innerText = game.player1turn ? `X got a win!` : `O got a win!`;
+    window.setTimeout(domUpdate, 3000);
   } else if (game.checkForDraw()) {
-    console.log(`It's a draw! Try again, nerds!`)
-    game.resetMoves()
+    game.resetMoves();
+    turnTrackerText.innerText = `Draw`;
+    window.setTimeout(domUpdate, 3000);
   } else {
-    console.log("No wins yet. Keep playing!")
-    game.passTurn()
+    game.passTurn();
+    domUpdate();
   }
 }
 
@@ -57,8 +57,8 @@ function domUpdate() {
 
 function takeSpace(event) {
   if (game.player1turn) {
-  event.target.attributes.src.nodeValue = "./img/x-ink.png";
-} else if (!game.player1turn) {
-  event.target.attributes.src.nodeValue = "./img/o-ink.png";
-};
+    event.target.attributes.src.nodeValue = "./img/x-ink.png";
+  } else if (!game.player1turn) {
+    event.target.attributes.src.nodeValue = "./img/o-ink.png";
+  };
 }
