@@ -36,15 +36,15 @@ function clickHandler() {
 
 function resolver() {
   if (game.checkForWin()) {
-    turnTrackerText.innerText = game.player1turn ? `X got a win!` : `O got a win!`;
+    turnTrackerText.innerText = game.player1turn ? `DESTROYED` : `AWAKENED`;
     game.resetMoves();
     stopClick();
-    p1WinText.innerText = `X wins: ${game.player1.wins}`;
-    p2WinText.innerText = `O wins: ${game.player2.wins}`;
+    p1WinText.innerText = `${game.player1.wins}`;
+    p2WinText.innerText = `${game.player2.wins}`;
     window.setTimeout(domUpdate, 3000);
   } else if (game.checkForDraw()) {
     game.resetMoves();
-    turnTrackerText.innerText = `Draw`;
+    turnTrackerText.innerText = `DRAW`;
     stopClick()
     window.setTimeout(domUpdate, 3000);
   } else {
@@ -56,9 +56,9 @@ function resolver() {
 
 function domUpdate() {
   allowClick()
-  turnTrackerText.innerText = game.player1turn ? `X's turn` : `O's turn`;
-  p1WinText.innerText = `X wins: ${game.player1.wins}`;
-  p2WinText.innerText = `O wins: ${game.player2.wins}`;
+  turnTrackerText.innerText = game.player1turn ? `Destroy...` : `Awaken...`;
+  p1WinText.innerText = `${game.player1.wins}`;
+  p2WinText.innerText = `${game.player2.wins}`;
   if (game.player1.moves.length === 0 && game.player2.moves.length === 0) {
     for (var i = 0; i < sectors.length; i++) {
       sectors[i].src = "./img/Skull.png";
