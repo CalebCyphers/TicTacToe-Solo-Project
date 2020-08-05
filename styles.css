@@ -121,3 +121,7 @@ h2 {
   height: 100%;
   width: auto;
 }
+.sector-img:hover {
+  cursor: pointer;
+  opacity: 85%;
+}
