@@ -1,6 +1,14 @@
+@font-face {
+  src: url("./fonts/AncientModernTales-a7Po.ttf");
+  font-family: AncientModernTales;
+}
+
 html {
-  background-image: url("./img/test-bg.jpg");
-  background-size: 100% 100%;
+  background-image: url("./img/background.jpeg");
+  background-size: 120% auto;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-color: black;
 }
 
 body {
@@ -19,12 +27,17 @@ main {
 h1 {
   color: white;
   text-align: center;
-  font-size: 4rem;
+  font-size: 6rem;
+  font-family: AncientModernTales;
+  margin-top: 9rem;
+  margin-bottom: 1.5rem;
 }
 
 h2 {
   color: white;
   text-align: center;
+  font-family: AncientModernTales;
+  font-size: 6rem;
 }
 
 .player1-info {
@@ -39,8 +52,15 @@ h2 {
   width: 34rem;
 }
 
+.player-display {
+  padding-top: 28rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
 .win-text-wrapper {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 12%;
@@ -74,7 +94,7 @@ h2 {
 
 .overlay {
   position: absolute;
-  background-color: red;
+  background-color: black;
   opacity: 0;
   height: 100%;
   width: 100%;
@@ -98,6 +118,10 @@ h2 {
 }
 
 .sector-img {
-  height: 90%;
+  height: 100%;
   width: auto;
+}
+.sector-img:hover {
+  cursor: pointer;
+  opacity: 85%;
 }
